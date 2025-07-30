@@ -471,6 +471,67 @@ class ZKLibTCP {
       return Promise.reject(err)
     }
   }
+  
+
+  async getSerialNumber() {
+    const keyword = '~SerialNumber';
+    try {
+      const data = await this.executeCmd(11, keyword)
+      return data.slice(8).toString('utf-8').replace(keyword + '=', '');
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+
+      async getDeviceVersion() {
+    const keyword = '~ZKFPVersion';;
+    try {
+      const data = await this.executeCmd(COMMANDS.CMD_OPTIONS_RRQ, keyword)
+      
+      return data.slice(8).toString('ascii').replace(keyword + '=', '');
+      
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+  
+  async getDeviceName() {
+    const keyword = '~DeviceName';
+    try {
+      const data = await this.executeCmd(COMMANDS.CMD_OPTIONS_RRQ, keyword)
+      
+      return data.slice(8).toString('ascii').replace(keyword + '=', '');
+      
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+  
+  async getPlatform() {
+    const keyword = '~Platform';
+    try {
+      const data = await this.executeCmd(COMMANDS.CMD_OPTIONS_RRQ, keyword)
+      
+      return data.slice(8).toString('ascii').replace(keyword + '=', '');
+      
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+  
+  async getOS() {
+    const keyword = '~OS';
+    try {
+      const data = await this.executeCmd(COMMANDS.CMD_OPTIONS_RRQ, keyword)
+      
+      return data.slice(8).toString('ascii').replace(keyword + '=', '');
+      
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+
+
 
   async clearAttendanceLog (){
     return await this.executeCmd(COMMANDS.CMD_CLEAR_ATTLOG, '')

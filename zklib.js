@@ -213,6 +213,34 @@ class ZKLib {
         )
     }
 
+    async getSerialNumber(){
+        console.log("getSerialNumber in sundar fork")
+        return await this.functionWrapper(
+            ()=> this.zklibTcp.getSerialNumber()
+        )
+    }
+
+    async getDeviceVersion(){
+        return await this.functionWrapper(
+            ()=> this.zklibTcp.getDeviceVersion()
+        )
+    }
+    async getDeviceName(){
+        return await this.functionWrapper(
+            ()=> this.zklibTcp.getDeviceName()
+        )
+    }
+    async getPlatform(){
+        return await this.functionWrapper(
+            ()=> this.zklibTcp.getPlatform()
+        )
+    }
+    async getOS(){
+        return await this.functionWrapper(
+            ()=> this.zklibTcp.getOS()
+        )
+    }
+
     setIntervalSchedule(cb , timer){
         this.interval = setInterval(cb, timer)
     }

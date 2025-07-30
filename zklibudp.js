@@ -437,6 +437,16 @@ class ZKLibUDP {
     }
   }
 
+  async getSerialNumber() {
+    const keyword = '~SerialNumber';
+    try {
+      const data = await this.executeCmd(11, keyword)
+      return data.slice(8).toString('utf-8').replace(keyword + '=', '');
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
+
   async clearAttendanceLog (){
     return await this.executeCmd(COMMANDS.CMD_CLEAR_ATTLOG, '')
   }
